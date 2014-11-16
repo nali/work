@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Work by nali</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Work</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/nali/work">View the Project on GitHub <small>nali/work</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/nali/work/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/nali/work/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/nali/work">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a id="confluence-feature-development" class="anchor" href="#confluence-feature-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Confluence Feature development</h2>
+
+<h3>
+<a id="multi-file-type-previewer" class="anchor" href="#multi-file-type-previewer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multi file type previewer</h3>
+
+<h3>
+<a id="aggregated-notifications-inbox" class="anchor" href="#aggregated-notifications-inbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aggregated notifications inbox</h3>
+
+<h3>
+<a id="user-onboarding-experiments" class="anchor" href="#user-onboarding-experiments" aria-hidden="true"><span class="octicon octicon-link"></span></a>User onboarding experiments</h3>
+
+<h2>
+<a id="lenditt---a-collaborative-consumption-experiment" class="anchor" href="#lenditt---a-collaborative-consumption-experiment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lenditt - a collaborative consumption experiment</h2>
+
+<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+
+<h2>
+<a id="typespeed---a-kitsch-star-wars-themed-typing-game" class="anchor" href="#typespeed---a-kitsch-star-wars-themed-typing-game" aria-hidden="true"><span class="octicon octicon-link"></span></a>Typespeed - a kitsch Star Wars themed typing game</h2>
+
+<p>(ns typewars.core
+      (:gen-class :main true)
+      (:require 
+        [clojure.contrib.string :as st]
+        [clojure.java.io :as io])
+      (:use quil.core)
+    )</p>
+
+<pre><code>(import '(java.applet Applet)
+        '(java.io File)
+        '(java.net URL))
+
+(defn rand-seek [x]
+  (nth x (rand-int (count x)))
+)
+
+(defn get-lines [wordfile]
+  "Seek each word to be typed, from a file"
+  (with-open [r (io/reader wordfile)]
+    (doall (line-seq r))))
+
+(defn clean-word [s]
+  "Given a string, lower-case words with whitespace and punctuation removed"
+  (map #(.toLowerCase %) (filter #(not (.isEmpty %)) (seq (.split #"[\s\W]+" s)))))
+
+(defn play-url [url-string]
+  (.play (Applet/newAudioClip (URL. url-string))))
+
+(defn find-sound [file-name]
+  "Tailors soundclip addresses for play-url"
+  (let [absolute-name (.getAbsolutePath (File. file-name))]
+        (str "file://" absolute-name)
+  )
+)
+
+(defn get-star-wars-quote []
+  (let [quotes (list "May the Force be with you" 
+                     "I find your lack of faith disturbing"
+                     "Iâ€™ve got a very bad feeling about this"
+                     "Youâ€™re all clear, kid! Now letâ€™s blow this thing and go home!"
+                     "The Force is strong with this one"
+                     "What a piece of junk!"
+                     "Watch your mouth kid, or youâ€™ll find yourself floating home"
+                     "Arenâ€™t you a little short for a stormtrooper?"
+                     "You came in here and you didnâ€™t have a plan for getting out?"
+                     "Into the garbage chute, flyboy!"
+                     "I suggest a new strategy, R2. Let the wookiee win"
+                     "When I left you, I was but the learner, now I am the master"
+                     "These arenâ€™t the droids youâ€™re looking for"
+                     "I've always liked your shoes")]
+    (rand-seek quotes)
+  )
+)
+
+(defn setup []
+  (let [funfont (create-font "resources/ProFontWindows.ttf" 30)
+        wordfile "resources/intro.txt"                          ; The file containing a newline separated word list
+        bgfile   "resources/mainscreen.jpg"       ; The background image
+        introfile "resources/introscreen.jpg"         ; The intro image
+        endfile  "resources/endscreen.jpg"  ; The image to be displayed at the end 
+        forcebarfile "resources/lightsbr.png"]
+    (frame-rate 24)
+    (smooth)
+    (background 0)
+    (text-font funfont)
+    (no-fill)
+    (set-state! :score        (atom 0)
+                :typed        (atom "")
+                :game         (atom '())
+                :words        (atom (get-lines wordfile))
+                :missedwords  (atom 0)
+                :ended        (atom -1)
+                :bg           (load-image bgfile)
+                :intro        (load-image introfile)
+                :end          (load-image endfile)
+                :forcebar     (load-image forcebarfile)
+                :quotesw      (atom (get-star-wars-quote))
+                :wordfile     wordfile
+    )
+  )
+)
+
+(defn make-str
+  "Make a string from a sequence of characters"
+  ([chars] (make-str chars ""))
+  ([chars result]
+    (if (zero? (count chars))
+      result
+      (recur (drop 1 chars) (str result (first chars)))
+    )
+  )
+)
+
+(defn is-in [n typed word]
+  (if (&gt; n 0)
+    (if (= (take n word) (take-last n typed))
+      n
+      (is-in (- n 1) typed word)    
+    )
+    0
+  )
+)
+
+(defn drawword [x]
+  (let [typed (state :typed)
+        n     (is-in (count (x :word)) @typed (x :word))]
+    (fill 255 255 255)
+    (text (make-str (take n (x :word))) (x :posx)  (x :posy))
+    (fill 206 145 60)
+    (text (make-str (take-last (- (count (x :word)) n) (x :word))) (+ (x :posx) (* n 15)) (x :posy))
+  )
+)
+
+(defn updatepos [y]
+  (do (update-in y [:posx] #(+ % (:speed y))))
+)
+
+(defn get-ypos [] 
+  (+ (rand-int (- (height) 150)) 75)
+)
+
+(defn get-speed []
+  (+ (rand-int 5) 2)
+)
+
+(defn end-game []
+  (let [ended   (state :ended)
+        quotesw (state :quotesw)]
+    (reset! ended 1)
+    (reset! quotesw (get-star-wars-quote))
+  )
+)
+
+(defn get-word []
+  (let [words   (state :words)]
+    (do
+      (reset! words (rest @words)) 
+      (first (clean-word (first @words)))
+
+    )
+  )
+)
+
+(defn newitem []
+  (let [posx-list   (take 20 (range))
+        word        (get-word)]
+    (if (not= word nil)
+      {:word word
+      :posx (rand-seek posx-list)
+      :posy (get-ypos)
+      :speed (get-speed)}
+      (end-game)
+    )
+  )
+)
+
+(defn reset-game []
+  (let [game (state :game)
+        typed (state :typed)
+        missedwords (state :missedwords)
+        words (state :words)
+        score (state :score)]
+  (reset! game '())
+  (reset! missedwords 0)
+  (reset! words '())
+  (reset! typed "")
+  ;(reset! score 0)
+  )
+)
+
+(defn matchword [x]
+  (let [game    (state :game)
+        typed   (state :typed)
+        score   (state :score)
+        sounds  (map find-sound '("resources/lasrhit1.wav" "resources/lasrhit2.wav" "resources/lasrhit3.wav" "resources/lasrhit4.wav"))]
+    (if (clojure.contrib.string/substring? (x :word) @typed);if a substring of what is typed is a word
+      (do (swap! score + (* (count (x :word)) (x :speed)))         
+          (reset! typed "")
+          (play-url (rand-seek sounds))
+          true)
+      false
+    )
+  )
+)
+
+(defn draw []
+  (let [game        (state :game)
+        score       (state :score)
+        words       (state :words)
+        numwords    (count @words)
+        gamelength  (count @game)
+        bg          (state :bg)
+        end         (state :end) 
+        intro       (state :intro)
+        ended       (state :ended)
+        forcebar    (state :forcebar)
+        missedwords (state :missedwords)
+        quotesw     (state :quotesw)
+        ]
+
+      (if (= -1 @ended)
+        (background-image intro)
+        (do 
+          (if (and (&lt; gamelength 1) (= 1 @ended))
+            (do (background-image end)
+                (text-size 40)
+                (fill 212 210 56)
+                (text-align :center)
+                (text @quotesw 630 100)
+                (text (str "SCORE " @score) 630 395)
+                (text-align :left)
+            )
+
+          (if (or (&gt; numwords 0) (&gt; gamelength 0))
+            (do (background-image bg)
+              (if (= @missedwords 10)
+                (do
+                  (end-game)
+                  (reset-game)
+                )
+              )
+              (let [life (* (/ @missedwords 10) 240) 
+                    screencopy (get-pixel (- 400 life) 40 (+ 20 life) 43)]
+                (set-image 30 40 forcebar)
+                (set-image (- 400 life) 40 screencopy)
+              )
+              (fill 255 255 255)
+              (text (str "SCORE " @score) 30 (- (height) 25))
+              (doall (map drawword @game))
+              (reset! game (map updatepos @game))
+              (swap! missedwords + (count (filter #(&gt; (% :posx) (width)) @game)))
+              (reset! game (remove #(&gt; (% :posx) (width)) @game))
+
+              (if (&gt; numwords 1)
+                (if (= 0 (mod (frame-count) (+ 20 (rand-int 10))))
+                  (reset! game (concat @game (list (newitem))))
+                )
+              (end-game)
+              )
+              )
+            )
+          )
+        )
+      )
+  )
+)
+
+
+(defn key-press []
+  (let [typed (state :typed)
+        game (state :game)
+        letter (str (raw-key))
+        ended (state :ended)
+        words (state :words)
+        wordfile (state :wordfile)
+        missedwords (state :missedwords)]
+      (if (and (or (= -1 @ended) (= 1 @ended)) (= letter " "))
+        (do 
+          (reset-game)
+          (reset! words (get-lines wordfile))
+          (reset! ended 0)
+          ;(play-url (find-sound "resources/cantina.mid"))
+          (text-size 30)
+        )  
+      (do  
+        (reset! typed (str @typed letter))
+        (reset! game (remove matchword @game))
+      )
+    )
+  )
+)
+
+(defsketch gen-art-3
+  :title "TYPEWARS"
+  :setup setup
+  :draw draw
+  :size [1260 630]
+  :key-typed key-press
+)
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/nali">nali</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
