@@ -49,16 +49,17 @@
 and more than just images. Along with a graduate developer, I wrote a component that now has almost 200,000 users daily (and no major issues have arisen!). I'm proud of creating a quality, cross-browser file viewer, and mentoring the graduate developer through the process. The API has been easy enough to use that another Atlassian team has started using the file viewer in their product. </p>
 
 <p>Screenshot: 
-<img src="https://github.com/nali/work/blob/master/screenshots/file_viewer.png" alt=""></p>
+<img src="https://raw.githubusercontent.com/nali/work/master/screenshots/file_viewer.png" alt=""></p>
 
-<p>HTML extract:
-    &lt;!DOCTYPE html&gt;
-    
-    </p>
-        
-    
+<p>HTML extract   </p>
 
-<pre><code>&lt;body&gt;
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
     &lt;div id="cp-container"&gt;
         &lt;div class="aui-group" id="cp-header"&gt;
             &lt;div class="aui-item expanded" id="cp-title-container"&gt;
@@ -252,25 +253,26 @@ and more than just images. Along with a graduate developer, I wrote a component 
 &lt;/html&gt;
 </code></pre>
 
-<p>Code extract: 
-    define("cp/component/minimode/file-minimode-view",
-        [
-            "jquery",
-            "ajs",
-            "backbone",
-            "cp/component/minimode/file-thumbnail-view",
-            "cp/component/template-store-singleton"
-        ],
-        function(
-            $,
-            AJS,
-            Backbone,
-            FileThumbnailView,
-            templateStore
-        ) {
-            "use strict";</p>
+<p>Code extract: </p>
 
-<pre><code>        var FileMinimodeView = Backbone.View.extend({
+<pre><code>define("cp/component/minimode/file-minimode-view",
+    [
+        "jquery",
+        "ajs",
+        "backbone",
+        "cp/component/minimode/file-thumbnail-view",
+        "cp/component/template-store-singleton"
+    ],
+    function(
+        $,
+        AJS,
+        Backbone,
+        FileThumbnailView,
+        templateStore
+    ) {
+        "use strict";
+
+        var FileMinimodeView = Backbone.View.extend({
 
             id: "cp-footer-minimode",
 
@@ -351,44 +353,65 @@ and more than just images. Along with a graduate developer, I wrote a component 
 
         return FileMinimodeView;
     }
-);
+);  
 </code></pre>
 
 <h3>
 <a id="aggregated-notifications-inbox" class="anchor" href="#aggregated-notifications-inbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aggregated notifications inbox</h3>
 
-<p>Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Jasmine</code>
-Involvement: developer in a</p>
+<p>Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Jasmine</code></p>
+
+<p>Involvement: developer in a team of two backend devs and one other frontend dev</p>
+
+<p>Email is a problem. The aggregated notifications inbox was designed as the place for all your notifications, across Atlassian products. It features polling to get the latest updates, and allows notifications to be starred, and notes added, for later reference.</p>
+
+<p><img src="http://atlassian.wpengine.netdna-cdn.com/wp-content/uploads/team-collaboration-software-confluence-notifications1.png" alt="Confluence tasks"></p>
 
 <h3>
 <a id="user-onboarding-experiments" class="anchor" href="#user-onboarding-experiments" aria-hidden="true"><span class="octicon octicon-link"></span></a>User onboarding experiments</h3>
 
-<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>
-Libraries &amp; tools: <code>underscore.js</code>, <code>jQuery</code>, <code>grunt</code>, <code>RequireJS</code>
-Involvement: sole developer</p>
+<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code></p>
+
+<p>Libraries &amp; tools: <code>underscore.js</code>, <code>jQuery</code>, <code>grunt</code>, <code>RequireJS</code></p>
+
+<p>Involvement: sole developer</p>
+
+<p>How do you help users get up to speed with software? This has been the question I've been thinking about for the past couple of months. With Confluence, we want user engagement up in the first couple of days (this often results in an increase in conversion rates to paying customers). I've been writing fast, prototype-style experiences and running them as experiments on new evaluators of Confluence to determine whether they increase engagment.</p>
+
+<p>Here's an example of one of those experiences that I wrote:</p>
+
+<p>Screenshot:
+<img src="https://raw.githubusercontent.com/nali/work/master/screenshots/grow1421.gif" alt="Experiment"></p>
 
 <h2>
 <a id="lenditt---a-collaborative-consumption-experiment" class="anchor" href="#lenditt---a-collaborative-consumption-experiment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lenditt - a collaborative consumption experiment</h2>
 
-<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>, <code>Python</code> (Django)
-Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>bootstrap</code>
-Involvement: Sole developer + design</p>
+<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>, <code>Python</code> (Django)</p>
 
-<p>While doing my Masters degree in Computer Science and living in a small community, I created a site that would allow people to rent out commonly-used items to each other. The website was a social experiment (that ultimately failed). I acted as designer as well as full stack developer. </p>
+<p>Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>bootstrap</code></p>
+
+<p>Involvement: Sole developer + design</p>
+
+<p>While doing my Masters degree in Computer Science and living in a small community, I created a site that would allow people to rent out commonly-used items to each other. The website was a social experiment. I acted as designer as well as full stack developer. </p>
 
 <p>Screenshot:
-<img src="https://github.com/nali/work/blob/master/screenshots/lenditt.png" alt="Lenditt"></p>
+<img src="https://raw.githubusercontent.com/nali/work/master/screenshots/lenditt.png" alt="Lenditt"></p>
 
 <h2>
 <a id="typespeed---a-kitsch-star-wars-themed-typing-game" class="anchor" href="#typespeed---a-kitsch-star-wars-themed-typing-game" aria-hidden="true"><span class="octicon octicon-link"></span></a>Typespeed - a kitsch Star Wars themed typing game</h2>
 
-<p>Languages: <code>Clojure</code>
-Libraries &amp; tools: <code>Leiningen</code>
-Involvement: pair programmed</p>
+<p>Languages: <code>Clojure</code></p>
 
-<p>With my (now) husband, I wrote a typing game in Clojure for fun. It was an interesting challenge to try an develop in a functional style. The graphics are intended to be retro-kitsch. </p>
+<p>Libraries &amp; tools: <code>Leiningen</code></p>
 
-<p>The game in action:</p>
+<p>Involvement: pair programmed</p>
+
+<p>With <a href="http://hjonasson.github.io/">my husband</a>, I wrote a typing game in Clojure for fun. It was an interesting challenge to try an develop in a functional style. The graphics are intended to be retro-kitsch. </p>
+
+<p>Screenshot:
+<img src="https://raw.githubusercontent.com/nali/work/master/screenshots/typewars_still.png" alt="Typewars"></p>
+
+<p><a href="https://raw.githubusercontent.com/nali/work/master/screenshots/typewars.gif">See an animated gif of the game in action</a>.</p>
 
 <p>Code extract: 
   (ns typewars.core
