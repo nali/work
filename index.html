@@ -16,7 +16,7 @@
     <div class="wrapper">
       <section>
         <h1>
-<a id="a-sample-of-the-work-of-nabeelah-ali" class="anchor" href="#a-sample-of-the-work-of-nabeelah-ali" aria-hidden="true"><span class="octicon octicon-link"></span></a>A sample of the work of Nabeelah Ali</h1>
+<a id="a-sample-of-the-work-of-nabeelah-ali" class="anchor" href="#a-sample-of-the-work-of-nabeelah-ali" aria-hidden="true"><span class="octicon octicon-link"></span></a>nabeelah ali – a brief portfolio</h1>
 
 <h2>
 <a id="confluence-feature-development" class="anchor" href="#confluence-feature-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Confluence Feature development</h2>
@@ -400,18 +400,20 @@ and more than just images. Along with a graduate developer, I wrote a component 
 
 <p><a href="https://raw.githubusercontent.com/nali/work/master/screenshots/typewars.gif">See an animated gif of the game in action</a>.</p>
 
-<p>Code extract: 
-  (ns typewars.core
-      (:gen-class :main true)
-      (:require 
-        [clojure.contrib.string :as st]
-        [clojure.java.io :as io])
-      (:use quil.core)
-    )</p>
+<p>Code extract:</p>
 
-<pre><code>(import '(java.applet Applet)
-        '(java.io File)
-        '(java.net URL))
+<pre><code>
+(ns typewars.core
+    (:gen-class :main true)
+    (:require 
+      [clojure.contrib.string :as st]
+      [clojure.java.io :as io])
+    (:use quil.core)
+)
+
+(import '(java.applet Applet)
+      '(java.io File)
+      '(java.net URL))
 
 (defn rand-seek [x]
   (nth x (rand-int (count x)))
