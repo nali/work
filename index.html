@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>A brief history of work // Nabeelah Ali</title>
+    <title>Work by nali</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -14,28 +14,170 @@
   </head>
   <body>
     <div class="wrapper">
+      <header>
+        <h1>Work</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/nali/work">View the Project on GitHub <small>nali/work</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/nali/work/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/nali/work/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/nali/work">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
       <section>
         <h2>
 <a id="confluence-feature-development" class="anchor" href="#confluence-feature-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Confluence Feature development</h2>
 
+<p>I current work at Atlassian, where I work on one of Atlassian's flagship products: <a href="https://www.atlassian.com/software/confluence">Confluence</a> - a collaborative wiki designed to replace email. Here are a couple of projects I've worked on over the years.</p>
+
 <h3>
 <a id="multi-file-type-previewer" class="anchor" href="#multi-file-type-previewer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multi file type previewer</h3>
+
+<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>
+Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Karma</code>, <code>QUnit</code>, <code>sinon.js</code>, <code>almond</code>, <code>WebDriver</code>
+Involvement: Lead developer </p>
+
+<p>At Atlassian, we used to use fancybox in almost all our applications. We wanted to replace fancybox with our own file viewer that was lightweight, supported our own set of features, like annotating files,
+and more than just images. I was tasked with the replacement - and along with a graduate developer wrote a component that now has almost 200,000 users daily (and no major issues have arisen!). I'm proud of creating a quality, cross-browser file viewer, and mentoring the graduate developer through the process (he was very hesitant with JavaScript). The API has been easy enough to use that another Atlassian team has started using the file viewer in their product. </p>
+
+<p>Screenshot: </p>
+
+<p>HTML extract:</p>
+
+<p>Code extract: 
+  define("cp/component/minimode/file-minimode-view",
+        [
+            "jquery",
+            "ajs",
+            "backbone",
+            "cp/component/minimode/file-thumbnail-view",
+            "cp/component/template-store-singleton"
+        ],
+        function(
+            $,
+            AJS,
+            Backbone,
+            FileThumbnailView,
+            templateStore
+        ) {
+            "use strict";</p>
+
+<pre><code>        var FileMinimodeView = Backbone.View.extend({
+
+            id: "cp-footer-minimode",
+
+            initialize: function(options) {
+                this.subviews = [];
+                this._fileViewer = options.fileViewer;
+                this._panelView = options.panelView;
+                this.listenTo(this.collection, 'add reset', this.render);
+                this.listenTo(this._panelView, 'togglePanel', this._fireAnalytics);
+                this.listenTo(this._panelView, 'renderPanel', this._forceChromeRepaint);
+                this.listenTo(this._panelView, 'renderPanel', this.scrollToSelected);
+                this.$minimode = $(templateStore.get('minimode')());
+                this.$minimode.appendTo(this.$el);
+            },
+
+            closeOldSubviews: function() {
+                while (this.subviews.length &gt; 0) {
+                    var view = this.subviews.pop();
+                    view.remove();
+                    view.unbind();
+                }
+            },
+
+            render: function() {
+                this.closeOldSubviews();
+
+                this.collection.each(function(model) {
+                    var view = new FileThumbnailView({
+                        model: model,
+                        fileViewer: this._fileViewer,
+                        panelView: this._panelView
+                    });
+                    this.subviews.push(view);
+                    $(view.render().el).appendTo(this.$minimode);
+                }, this);
+
+                return this;
+            },
+
+            scrollToSelected: function() {
+                var file = this._fileViewer._fileState.getCurrent();
+                this.subviews.forEach(function (view) {
+                    if(view.model === file) {
+                        var topPos = view.$el.get(0).offsetTop - 59;
+                        if ((topPos) &amp;&amp; this.$el.scrollTop !== topPos) {
+                            this.$el.find("#cp-thumbnails").scrollTop(topPos);
+                        }
+                    }
+                }.bind(this));
+            },
+
+            _fireAnalytics: function(panelId, isExpanded) {
+                if (panelId === 'minimode') {
+                    AJS.trigger('analyticsEvent',
+                        {name: isExpanded ?
+                            'confluence-spaces.previews.minimode.opened' :
+                            'confluence-spaces.previews.minimode.closed'
+                        }
+                    );
+                }
+            },
+
+            _forceChromeRepaint: function() {
+                // Chrome doesn't respect the 100% height on images once the container is resized.
+                var $img = $("#cp-img");
+                if ($img.length) {
+                    var $preview = $img.closest("#cp-image-preview"),
+                        left = $preview.scrollLeft(),
+                        top = $preview.scrollTop();
+                    $img.css('display', 'none').height();
+                    $img.css('display', 'inline-block');
+                    $preview.scrollLeft(left);
+                    $preview.scrollTop(top);
+                }
+            }
+
+        });
+
+        return FileMinimodeView;
+    }
+);
+</code></pre>
 
 <h3>
 <a id="aggregated-notifications-inbox" class="anchor" href="#aggregated-notifications-inbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aggregated notifications inbox</h3>
 
+<p>Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Jasmine</code></p>
+
 <h3>
 <a id="user-onboarding-experiments" class="anchor" href="#user-onboarding-experiments" aria-hidden="true"><span class="octicon octicon-link"></span></a>User onboarding experiments</h3>
+
+<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>
+Libraries &amp; tools: <code>underscore.js</code>, <code>jQuery</code>, <code>grunt</code>, <code>RequireJS</code>
+Involvement: sole developer</p>
 
 <h2>
 <a id="lenditt---a-collaborative-consumption-experiment" class="anchor" href="#lenditt---a-collaborative-consumption-experiment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lenditt - a collaborative consumption experiment</h2>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>, <code>Python</code> (Django)
+Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>
+Involvement: Sole developer + design</p>
+
+<p>While doing my Masters degree in Computer Science and living in a smal, I created a site that would allow people to </p>
 
 <h2>
 <a id="typespeed---a-kitsch-star-wars-themed-typing-game" class="anchor" href="#typespeed---a-kitsch-star-wars-themed-typing-game" aria-hidden="true"><span class="octicon octicon-link"></span></a>Typespeed - a kitsch Star Wars themed typing game</h2>
 
-<p>(ns typewars.core
+<p>Languages: <code>Clojure</code>
+Libraries &amp; tools: <code>Leiningen</code></p>
+
+<p>Code extract: 
+  (ns typewars.core
       (:gen-class :main true)
       (:require 
         [clojure.contrib.string :as st]
@@ -315,6 +457,11 @@
   :key-typed key-press
 )
 </code></pre>
+
+<h2>
+<a id="more" class="anchor" href="#more" aria-hidden="true"><span class="octicon octicon-link"></span></a>More?</h2>
+
+<p>I keep most of my code for personal projects over at <a href="https://bitbucket.org/nali">https://bitbucket.org/nali</a>.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/nali">nali</a></p>
