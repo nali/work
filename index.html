@@ -28,27 +28,232 @@
         </ul>
       </header>
       <section>
-        <h2>
+        <h1>
+<a id="a-sample-of-the-work-of-nabeelah-ali" class="anchor" href="#a-sample-of-the-work-of-nabeelah-ali" aria-hidden="true"><span class="octicon octicon-link"></span></a>A sample of the work of Nabeelah Ali</h1>
+
+<h2>
 <a id="confluence-feature-development" class="anchor" href="#confluence-feature-development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Confluence Feature development</h2>
 
-<p>I current work at Atlassian, where I work on one of Atlassian's flagship products: <a href="https://www.atlassian.com/software/confluence">Confluence</a> - a collaborative wiki designed to replace email. Here are a couple of projects I've worked on over the years.</p>
+<p>I currently work at Atlassian, where I work on one of Atlassian's flagship products: <a href="https://www.atlassian.com/software/confluence">Confluence</a> - a collaborative wiki designed to replace email. Here are a couple of projects I've worked on over the years.</p>
 
 <h3>
 <a id="multi-file-type-previewer" class="anchor" href="#multi-file-type-previewer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multi file type previewer</h3>
 
-<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>
-Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Karma</code>, <code>QUnit</code>, <code>sinon.js</code>, <code>almond</code>, <code>WebDriver</code>
-Involvement: Lead developer </p>
+<p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code></p>
+
+<p>Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Karma</code>, <code>QUnit</code>, <code>sinon.js</code>, <code>almond</code>, <code>WebDriver</code></p>
+
+<p>Involvement: Developer in a team of 2</p>
 
 <p>At Atlassian, we used to use fancybox in almost all our applications. We wanted to replace fancybox with our own file viewer that was lightweight, supported our own set of features, like annotating files,
-and more than just images. I was tasked with the replacement - and along with a graduate developer wrote a component that now has almost 200,000 users daily (and no major issues have arisen!). I'm proud of creating a quality, cross-browser file viewer, and mentoring the graduate developer through the process (he was very hesitant with JavaScript). The API has been easy enough to use that another Atlassian team has started using the file viewer in their product. </p>
+and more than just images. Along with a graduate developer, I wrote a component that now has almost 200,000 users daily (and no major issues have arisen!). I'm proud of creating a quality, cross-browser file viewer, and mentoring the graduate developer through the process. The API has been easy enough to use that another Atlassian team has started using the file viewer in their product. </p>
 
-<p>Screenshot: </p>
+<p>Screenshot: 
+<img src="https://github.com/nali/work/blob/master/screenshots/file_viewer.png" alt=""></p>
 
-<p>HTML extract:</p>
+<p>HTML extract:
+    &lt;!DOCTYPE html&gt;
+    
+    </p>
+        
+    
+
+<pre><code>&lt;body&gt;
+    &lt;div id="cp-container"&gt;
+        &lt;div class="aui-group" id="cp-header"&gt;
+            &lt;div class="aui-item expanded" id="cp-title-container"&gt;
+                &lt;div data-type="image"&gt;
+                    IMG_9857.JPG
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class="aui-item" id="cp-file-controls"&gt;
+                &lt;span&gt;&lt;a class="cp-icon" href="#" id="cp-control-panel-upload"
+                style=
+                "position: relative; z-index: 0;"&gt;&lt;/a&gt;&lt;/span&gt;&lt;span&gt;&lt;a class=
+                "cp-icon" href=
+                "https://extranet.atlassian.com/download/attachments/2302285232/IMG_9857.JPG?version=1&amp;amp;modificationDate=1411349441938&amp;amp;api=v2"
+                id="cp-control-panel-download"&gt;&lt;/a&gt;&lt;/span&gt;&lt;span&gt;&lt;a class=
+                "cp-icon" href="#" id="cp-control-panel-close"&gt;&lt;/a&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="minimode-banner short" id="cp-file-body"&gt;
+            &lt;div class="cp-file-body-content"&gt;
+                &lt;div id="cp-image-preview"&gt;
+                    &lt;div class="cp-image-container cp-fit-height"&gt;&lt;img alt=
+                    "IMG_9857.JPG" class="panning" id="cp-img" src=
+                    "https://extranet.atlassian.com/download/attachments/2302285232/IMG_9857.JPG?version=1&amp;amp;modificationDate=1411349441938&amp;amp;api=v2"
+                    style="width: auto; height: 100%;"&gt;&lt;/div&gt;&lt;span class=
+                    "cp-baseline-extension"&gt;&lt;/span&gt;
+
+                    &lt;div id="cp-file-control" style="display: none;"&gt;
+                        &lt;a class="cp-icon" href="#" id=
+                        "cp-file-control-minus"&gt;Zoom out&lt;/a&gt;&lt;a class="cp-icon"
+                        href="#" id="cp-file-control-plus"&gt;Zoom in&lt;/a&gt;&lt;a class=
+                        "cp-icon" href="#" id="cp-file-control-fit"&gt;Fit to page
+                        width&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div&gt;
+                &lt;div class="cp-spinner"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div&gt;
+                &lt;a class="cp-nav" href="#" id="cp-nav-left" style=
+                "display: inline;"&gt;Go to the previous file&lt;/a&gt;&lt;a class="cp-nav"
+                href="#" id="cp-nav-right" style="display: inline;"&gt;Go to the
+                next file&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="panel-view expanded" id="cp-footer"&gt;
+            &lt;div id="cp-footer-bar"&gt;
+                &lt;a href="#" id="cp-files-label"&gt;Show all files&lt;span class=
+                "aui-icon aui-icon-small aui-iconfont-arrows-up cp-files-collapser up"&gt;Show
+                all files&lt;/span&gt;&lt;span class=
+                "aui-icon aui-icon-small aui-iconfont-arrows-down cp-files-collapser down hidden"&gt;Hide
+                all files&lt;/span&gt;&lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;div id="cp-footer-minimode"&gt;
+                &lt;ol id="cp-thumbnails"&gt;
+                    &lt;li class="cp-thumbnail"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of image2014-9-22 11:21:27.png"
+                                src=
+                                "https://extranet.atlassian.com/download/thumbnails/2302285232/image2014-9-22%2011%3A21%3A27.png?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                image2014-9-22 11:21:27.png
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+
+                    &lt;li class="cp-thumbnail"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of naplassian-3.gif"
+                                src="https://extranet.atlassian.com/download/thumbnails/2302285232/naplassian-3.gif?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                naplassian-3.gif
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+
+                    &lt;li class="cp-thumbnail"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of IMG_9849-001.JPG"
+                                src="https://extranet.atlassian.com/download/thumbnails/2302285232/IMG_9849-001.JPG?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                IMG_9849-001.JPG
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+
+                    &lt;li class="cp-thumbnail"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of IMG_9830.JPG" src=
+                                "https://extranet.atlassian.com/download/thumbnails/2302285232/IMG_9830.JPG?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                IMG_9830.JPG
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+
+                    &lt;li class="cp-thumbnail"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of IMG_9825.JPG" src=
+                                "https://extranet.atlassian.com/download/thumbnails/2302285232/IMG_9825.JPG?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                IMG_9825.JPG
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+
+                    &lt;li class="cp-thumbnail"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of image2014-9-22 17:7:34.png"
+                                src=
+                                "https://extranet.atlassian.com/download/thumbnails/2302285232/image2014-9-22%2017%3A7%3A34.png?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                image2014-9-22 17:7:34.png
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+
+                    &lt;li class="cp-thumbnail selected"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of IMG_9857.JPG" src=
+                                "https://extranet.atlassian.com/download/thumbnails/2302285232/IMG_9857.JPG?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                IMG_9857.JPG
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+
+                    &lt;li class="cp-thumbnail"&gt;
+                        &lt;figure class="cp-thumbnail-group"&gt;
+                            &lt;div class="cp-thumbnail-img"&gt;
+                                &lt;a class="cp-thumbnail-img-container" href=
+                                "#"&gt;&lt;img alt=
+                                "View a larger version of image2014-9-22 10:17:40.png"
+                                src=
+                                "https://extranet.atlassian.com/download/thumbnails/2302285232/image2014-9-22%2010%3A17%3A40.png?api=v2"&gt;&lt;/a&gt;
+                            &lt;/div&gt;
+
+                            &lt;figcaption class="cp-thumbnail-title"&gt;
+                                image2014-9-22 10:17:40.png
+                            &lt;/figcaption&gt;
+                        &lt;/figure&gt;
+                    &lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="panel-view" id="cp-sidebar"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
 <p>Code extract: 
-  define("cp/component/minimode/file-minimode-view",
+    define("cp/component/minimode/file-minimode-view",
         [
             "jquery",
             "ajs",
@@ -152,7 +357,8 @@ and more than just images. I was tasked with the replacement - and along with a 
 <h3>
 <a id="aggregated-notifications-inbox" class="anchor" href="#aggregated-notifications-inbox" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aggregated notifications inbox</h3>
 
-<p>Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Jasmine</code></p>
+<p>Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>Jasmine</code>
+Involvement: developer in a</p>
 
 <h3>
 <a id="user-onboarding-experiments" class="anchor" href="#user-onboarding-experiments" aria-hidden="true"><span class="octicon octicon-link"></span></a>User onboarding experiments</h3>
@@ -165,16 +371,24 @@ Involvement: sole developer</p>
 <a id="lenditt---a-collaborative-consumption-experiment" class="anchor" href="#lenditt---a-collaborative-consumption-experiment" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lenditt - a collaborative consumption experiment</h2>
 
 <p>Languages: <code>JavaScript</code>, <code>HTML</code>, <code>CSS</code>, <code>Python</code> (Django)
-Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>
+Libraries &amp; tools: <code>Backbone.js</code>, <code>underscore.js</code>, <code>jQuery</code>, <code>bootstrap</code>
 Involvement: Sole developer + design</p>
 
-<p>While doing my Masters degree in Computer Science and living in a smal, I created a site that would allow people to </p>
+<p>While doing my Masters degree in Computer Science and living in a small community, I created a site that would allow people to rent out commonly-used items to each other. The website was a social experiment (that ultimately failed). I acted as designer as well as full stack developer. </p>
+
+<p>Screenshot:
+<img src="https://github.com/nali/work/blob/master/screenshots/lenditt.png" alt="Lenditt"></p>
 
 <h2>
 <a id="typespeed---a-kitsch-star-wars-themed-typing-game" class="anchor" href="#typespeed---a-kitsch-star-wars-themed-typing-game" aria-hidden="true"><span class="octicon octicon-link"></span></a>Typespeed - a kitsch Star Wars themed typing game</h2>
 
 <p>Languages: <code>Clojure</code>
-Libraries &amp; tools: <code>Leiningen</code></p>
+Libraries &amp; tools: <code>Leiningen</code>
+Involvement: pair programmed</p>
+
+<p>With my (now) husband, I wrote a typing game in Clojure for fun. It was an interesting challenge to try an develop in a functional style. The graphics are intended to be retro-kitsch. </p>
+
+<p>The game in action:</p>
 
 <p>Code extract: 
   (ns typewars.core
